@@ -21,6 +21,7 @@ class GoodsController extends Controller
         //查询商品详情
         //$info = GoodsModel::where(['goods_id'=>$goods_id])->first()->toArray();
         $info = GoodsModel::find($goods_id);            // find 查找主键
+        var_dump($info);
         echo '<pre>';print_r($info);echo '</pre>';
 
     }
