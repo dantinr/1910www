@@ -32,5 +32,7 @@ Route::post('/user/reg','User\IndexController@regDo');  //后台用户注册
 Route::get('/user/login','User\IndexController@login');  //前台用户登录
 Route::post('/user/login','User\IndexController@loginDo');  //前台用户登录
 
+Route::get('/user/center','User\IndexController@center');  //用户中心
+
 
 

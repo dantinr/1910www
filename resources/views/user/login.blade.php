@@ -8,10 +8,11 @@
     <title>登录</title>
 </head>
 <body>
+    <h2>用户登录</h2>
     <form action="/user/login" method="post">
         {{csrf_field()}}
         用户名： <input type="text" name="name" placeholder="用户名/Email"><br>
-        密码: <input type="password" name="pass1"><br>
+        密码: <input type="password" name="pass"><br>
         <input type="submit" value="登录">
     </form>
 </body>
