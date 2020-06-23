@@ -105,6 +105,9 @@ class IndexController extends Controller
         $res = password_verify($pass,$u->password);
         if($res)
         {
+            //向客户端设置cookie
+            setcookie('uid',$u->user_id,time()+3600,'/');
+            setcookie('name',$u->user_name,time()+3600,'/');
             header('Refresh:2;url=/user/center');
             echo "登录成功";
         }else{
@@ -119,6 +122,16 @@ class IndexController extends Controller
 
     public function center()
     {
-        return view('user.center');
+        //判断用户是否登录 ,判断是否有 uid 及 name字段
+        //echo '<pre>';print_r($_COOKIE);echo '</pre>';
+        if(isset($_COOKIE['uid']) && isset($_COOKIE['name']) )
+        {
+            return view('user.center');
+        }else{
+            //echo "未登录";die;
+            return redirect('/user/login');
+        }
+
+
     }
 }
