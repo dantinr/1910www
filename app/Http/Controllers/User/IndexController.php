@@ -113,8 +113,6 @@ class IndexController extends Controller
             echo "用户名与密码不一致,请重新登录";
         }
 
-
-
     }
 
 

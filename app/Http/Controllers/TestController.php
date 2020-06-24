@@ -23,4 +23,15 @@ class TestController extends Controller
         echo '$val1: '. $val1;
     }
 
+
+    public function test1()
+    {
+        $data = [
+            'name'  => 'zhangsan',
+            'email' => 'zhangsan@qq.com'
+        ];
+
+        return $data;
+    }
+
 }
