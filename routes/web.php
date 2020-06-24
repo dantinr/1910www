@@ -37,3 +37,8 @@ Route::get('/user/center','User\IndexController@center');  //用户中心
 
 
 
+//API
+Route::post('/api/user/reg','Api\UserController@reg');      //注册
+
+
+
