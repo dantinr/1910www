@@ -44,5 +44,9 @@ Route::get('/api/user/center','Api\UserController@center')->middleware('check.pr
 Route::get('/api/my/orders','Api\UserController@orders')->middleware('check.pri');      //我的订单
 Route::get('/api/my/cart','Api\UserController@cart')->middleware('check.pri');      //我的购物车
 
+Route::get('/api/a','Api\TestController@a')->middleware('check.pri','access.filter');
+Route::get('/api/b','Api\TestController@b')->middleware('check.pri','access.filter');
+Route::get('/api/c','Api\TestController@c')->middleware('check.pri','access.filter');
+
 
 
