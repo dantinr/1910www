@@ -143,23 +143,10 @@ class UserController extends Controller
     /**
      * 个人中心
      */
-    public function center()
+    public function center(Request $request)
     {
-        //判断用户是否登录 ,判断是否有 uid 字段
 
-
-        if(isset($_GET['token']))
-        {
-            $token = $_GET['token'];
-        }else{
-            $response = [
-                'errno' => 50007,
-                'msg'   => '请先登录'
-            ];
-            return $response;
-        }
-
-        //检查token是否有效
+        $token = $request->input('token');
         $uid = Redis::get($token);
 
         if($uid)
@@ -184,33 +171,6 @@ class UserController extends Controller
      */
     public function orders()
     {
-
-        //鉴权
-        if(isset($_GET['token']))
-        {
-            $token = $_GET['token'];
-            //验证token有效
-            $uid = Redis::get($token);
-            if($uid)
-            {
-
-            }else{
-                $response = [
-                    'errno' => 50008,
-                    'msg'   => '请先登录'
-                ];
-                return $response;
-            }
-
-        }else{
-            $response = [
-                'errno' => 50007,
-                'msg'   => '请先登录'
-            ];
-            return $response;
-        }
-
-
 
         //订单信息
         $arr = [
@@ -239,29 +199,6 @@ class UserController extends Controller
      */
     public function cart()
     {
-
-        if(!isset($_GET['token'])){
-            $response = [
-                'errno' => 50007,
-                'msg'   => '请先登录'
-            ];
-            return $response;
-        }
-
-        //鉴权
-        $token = $_GET['token'];
-        //验证token有效
-        $uid = Redis::get($token);
-        if($uid)
-        {
-
-        }else{
-            $response = [
-                'errno' => 50008,
-                'msg'   => '请先登录'
-            ];
-            return $response;
-        }
 
         $goods = [
             123,
