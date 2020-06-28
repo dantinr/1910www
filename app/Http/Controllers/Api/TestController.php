@@ -23,4 +23,19 @@ class TestController extends Controller
         echo __METHOD__;
     }
 
+    public function x()
+    {
+        echo __METHOD__;
+    }
+
+    public function y()
+    {
+        echo __METHOD__;
+    }
+
+    public function z()
+    {
+        echo __METHOD__;
+    }
+
 }

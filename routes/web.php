@@ -47,6 +47,12 @@ Route::get('/api/my/cart','Api\UserController@cart')->middleware('check.pri');  
 Route::get('/api/a','Api\TestController@a')->middleware('check.pri','access.filter');
 Route::get('/api/b','Api\TestController@b')->middleware('check.pri','access.filter');
 Route::get('/api/c','Api\TestController@c')->middleware('check.pri','access.filter');
+//路由分组
+Route::middleware('check.pri','access.filter')->group(function(){
+    Route::get('/api/x','Api\TestController@x');
+    Route::get('/api/y','Api\TestController@y');
+    Route::get('/api/z','Api\TestController@z');
+});
 
 
 

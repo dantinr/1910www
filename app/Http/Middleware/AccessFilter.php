@@ -33,6 +33,7 @@ class AccessFilter
             die( json_encode($response,JSON_UNESCAPED_UNICODE));
         }else{
             Redis::incr($key);
+            Redis::expire($key,$expire);        //过期自动删除
         }
 
         return $next($request);
