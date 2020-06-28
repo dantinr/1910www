@@ -31,7 +31,8 @@ class AccessFilter
             ];
             //设置key的过期时间
             Redis::expire($key,$expire);
-            die( json_encode($response,JSON_UNESCAPED_UNICODE));
+            //die( json_encode($response,JSON_UNESCAPED_UNICODE));
+            return response()->json($response);
         }else{
             Redis::incr($key);
             Redis::expire($key,$time_last);        //记录某个时间段内的访问次数
