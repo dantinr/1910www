@@ -27,11 +27,10 @@ class AccessFilter
         if($total > $max){
             $response = [
                 'errno' => 50010,
-                'msg'   => "请求过于频繁，请 {$expire} 秒后再试"
+                'msg'   => "请求过于频繁，请 {$expire} 秒后再试222"
             ];
             //设置key的过期时间
             Redis::expire($key,$expire);
-            //die( json_encode($response,JSON_UNESCAPED_UNICODE));
             return response()->json($response);
         }else{
             Redis::incr($key);

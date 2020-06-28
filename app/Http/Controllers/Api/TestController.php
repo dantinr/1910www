@@ -10,7 +10,7 @@ class TestController extends Controller
 
     public function a()
     {
-        echo __METHOD__;
+        echo "访问了a方法";
     }
 
     public function b()
