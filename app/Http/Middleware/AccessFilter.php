@@ -19,7 +19,8 @@ class AccessFilter
         $request_uri = $_SERVER['REQUEST_URI'];     //获取当前url
         $url_hash = substr(md5($request_uri),5,10);
         $max = env('API_ACCESS_MAX');                  //接口最大访问次数
-        $expire = env('API_ACCESS_TIMEOUT');           // n秒后重试时间
+        $expire = env('API_ACCESS_TIMEOUT');           //触发防刷规则后 等待时间
+        $time_last = env('API_ACCESS_TIME_LAST');      //接口访问的时间段
         $key = 'count_url_'.$url_hash;
         $total = Redis::get($key);      // 获取访问次数
 
@@ -33,7 +34,7 @@ class AccessFilter
             die( json_encode($response,JSON_UNESCAPED_UNICODE));
         }else{
             Redis::incr($key);
-            Redis::expire($key,$expire);        //过期自动删除
+            Redis::expire($key,$time_last);        //记录某个时间段内的访问次数
         }
 
         return $next($request);
