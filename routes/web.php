@@ -22,6 +22,8 @@ Route::get('/info',function(){
 //测试
 Route::get('/test/hello','TestController@hello');
 Route::get('/test1','TestController@test1');
+Route::get('/test/sign1','TestController@sign1');
+Route::get('/secret','TestController@secret');
 
 //商品
 Route::get('/goods/detail','Goods\GoodsController@detail');     //商品详情
