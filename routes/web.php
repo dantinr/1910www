@@ -21,11 +21,14 @@ Route::get('/info',function(){
 });
 
 //测试
-Route::get('/test/hello','TestController@hello');
-Route::get('/test1','TestController@test1');
-Route::get('/test/sign1','TestController@sign1');
-Route::get('/secret','TestController@secret');
-Route::get('/test/www','TestController@www');
+Route::prefix('/test')->group(function(){
+    Route::get('/hello','TestController@hello');
+    Route::get('/sign1','TestController@sign1');
+    Route::get('/www','TestController@www');
+    Route::get('/send-data','TestController@sendData');
+    Route::get('/post-data','TestController@postData');
+});
+
 
 //商品
 Route::get('/goods/detail','Goods\GoodsController@detail');     //商品详情
