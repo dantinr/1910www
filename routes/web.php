@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo "WWW";
+    //return view('welcome');
 });
 
 Route::get('/info',function(){
@@ -24,6 +25,7 @@ Route::get('/test/hello','TestController@hello');
 Route::get('/test1','TestController@test1');
 Route::get('/test/sign1','TestController@sign1');
 Route::get('/secret','TestController@secret');
+Route::get('/test/www','TestController@www');
 
 //商品
 Route::get('/goods/detail','Goods\GoodsController@detail');     //商品详情
