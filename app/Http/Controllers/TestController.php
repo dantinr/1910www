@@ -210,4 +210,29 @@ class TestController extends Controller
     }
 
 
+    /**
+     * 非对称加密
+     */
+    public function rsaEncrypt1()
+    {
+        $data = "天王盖地虎";        //待加密数据
+
+        //使用公钥加密
+        $key_content = file_get_contents(storage_path('keys/pub.key'));     //读取公钥内容
+        $pub_key = openssl_get_publickey($key_content);
+        openssl_public_encrypt($data,$enc_data,$pub_key);           //加密
+        var_dump($enc_data);
+        echo '<hr>';
+
+        //解密
+        $key_content = file_get_contents(storage_path('keys/priv.key'));     //读取私钥内容
+        $priv_key = openssl_get_privatekey($key_content);           //获取私钥
+        openssl_private_decrypt($enc_data,$dec_data,$priv_key);     //解密的结果在 $dec_data
+
+        var_dump($dec_data);
+
+
+    }
+
+
 }
