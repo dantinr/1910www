@@ -316,4 +316,21 @@ class TestController extends Controller
     }
 
 
+    public function rsaSign2()
+    {
+        $data = "天王盖地虎";
+        //计算签名
+        $key = openssl_get_privatekey( file_get_contents( storage_path('keys/a_priv.key') )  );
+        openssl_sign($data,$sign,$key);
+
+        $sign_str = urlencode(base64_encode($sign));
+        //将数据和 签名一起发送  GET / POST
+        $url = 'http://api.1910.com/rsa/verify2?data='.$data . '&sign='.$sign_str;
+
+        $response = file_get_contents($url);
+        echo $response;
+
+    }
+
+
 }

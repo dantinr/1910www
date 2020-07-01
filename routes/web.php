@@ -32,6 +32,8 @@ Route::prefix('/test')->group(function(){
     Route::get('/rsa/send-data1','TestController@sendData1');
     Route::get('/rsa/send-b','TestController@sendB');       // 非对称加密
     Route::get('/rsa/sign1','TestController@rsaSign1');     //私钥签名
+    Route::get('/rsa/sign2','TestController@rsaSign2');     //私钥签名
+
 
 });
 
